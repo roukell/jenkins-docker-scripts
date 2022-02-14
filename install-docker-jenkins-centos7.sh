@@ -26,7 +26,7 @@ sudo chmod 666 /var/run/docker.sock
 # run Jenkins
 sudo mkdir -p /var/jenkins_home
 sudo chown -R 1000:1000 /var/jenkins_home/
-docker run -d -v /var/jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 jenkins/jenkins:lts-jdk11
+docker run --name jenkins-docker -d -v /var/jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 jenkins/jenkins:lts-jdk11
 
 # show endpoint
 echo 'Jenkins installed'
