@@ -1,6 +1,6 @@
 # this Dockerfile allows access to the Docker client
 # it also expose the Docker socket, so that the Docker client is able to access Docker API
-# this way we can access Docker container (which runs on host machine) from within Docker container, so we can start new containers
+# this way we can access Docker (which runs on host machine) from Jenkins Docker container
 
 FROM jenkins/jenkins:lts
 USER root
