@@ -1,5 +1,5 @@
 #!/bin/bash
-# this script will first install Docker in Centos 7 and then start a Jenkins container
+# this script will first install Docker in CentOS and then start a Jenkins container
 # this script is designed for any remote/cloud host
 
 # uninstall old version of Docker
