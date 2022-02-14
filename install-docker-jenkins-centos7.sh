@@ -2,6 +2,16 @@
 # this script will first install docker in Centos 7 and then start a jenkins container
 # this script is designed for any remote/cloud host
 
+# uninstall old version of docker
+sudo yum remove docker \
+                docker-client \
+                docker-client-latest \
+                docker-common \
+                docker-latest \
+                docker-latest-logrotate \
+                docker-logrotate \
+                docker-engine
+
 # install docker
 sudo yum update
 sudo yum install -y yum-utils
@@ -20,5 +30,6 @@ docker run -d -v /var/jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000
 
 # show endpoint
 echo 'Jenkins installed'
-echo 'In your local machine, please edit /etc/hosts and then add new host -- '$(curl -s ifconfig.co)' hostname'
+echo "In your local machine, please edit /etc/hosts and then add new host -- $(tput bold)$(curl -s ifconfig.co) hostname"
 echo 'You should now be able to access jenkins at: http://hostname:8080'
+echo "Type $(tput bold)docker ps $(tput sgr0)in terminal to check if Jenkins container is running"
