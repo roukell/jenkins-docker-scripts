@@ -1,6 +1,7 @@
 #!/bin/bash
 # this script will first install Docker in CentOS and then start a Jenkins container
 # this script is designed for any remote/cloud host
+# please make sure user has sudo privilege 
 
 # uninstall old version of Docker
 sudo yum remove docker \
