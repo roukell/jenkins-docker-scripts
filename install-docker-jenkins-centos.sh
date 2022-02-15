@@ -31,9 +31,11 @@ sudo chown -R 1000:1000 /var/jenkins_home/
 if [ -f Dockerfile.jenkins-docker ]
   then echo "Dockerfile.jenkins-docker exists, building now"
   docker build -t jenkins-docker -f Dockerfile.jenkins-docker .
+  echo "jenkins-docker image build completed, going to run the container"
+  docker run --name jenkins -d -v /var/jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -p 8080:8080 -p 50000:50000 jenkins-docker
 else
-  echo "No Dockfile found, installing offical jenkins container"
-  docker run --name jenkins-docker -d -v /var/jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 jenkins/jenkins:lts-jdk11
+  echo "No Dockfile found, running offical jenkins container"
+  docker run --name jenkins -d -v /var/jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 jenkins/jenkins:lts-jdk11
 fi
 
 # show endpoint
