@@ -16,12 +16,12 @@ RUN mkdir -p /tmp/download && \
  usermod -aG staff,docker jenkins
 
 # download the latest Jenkins version & update ownership
-RUN curl https://ftp.yz.yamagata-u.ac.jp/pub/misc/jenkins/war/2.342/jenkins.war -o /usr/share/jenkins/jenkins.war && chown -R jenkins:jenkins /usr/share/jenkins/jenkins.war
+RUN curl https://ftp.yz.yamagata-u.ac.jp/pub/misc/jenkins/war/latest/jenkins.war -o /usr/share/jenkins/jenkins.war && chown -R jenkins:jenkins /usr/share/jenkins/jenkins.war
 
 USER jenkins
 
 ENV JAVA_OPTS=-Duser.timezone=Australia/Sydney \
-    JENKINS_VERSION=2.342
+    JENKINS_VERSION=${JENKINS_VERSION}
 
 # build command: docker build -t jenkins-docker -f Dockerfile.jenkins-docker .
 # run command: docker run --name jenkins-docker -d -v /var/jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -p 8080:8080 -p 50000:50000 jenkins-docker
