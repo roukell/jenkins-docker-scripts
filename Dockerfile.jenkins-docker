@@ -15,7 +15,7 @@ RUN mkdir -p /tmp/download && \
  groupadd -g 384 docker && \
  usermod -aG staff,docker jenkins
 
-# download the latest Jenkins version
+# download the latest Jenkins version & update ownership
 RUN curl https://ftp.yz.yamagata-u.ac.jp/pub/misc/jenkins/war/2.342/jenkins.war -o /usr/share/jenkins/jenkins.war && chown -R jenkins:jenkins /usr/share/jenkins/jenkins.war
 
 USER jenkins
